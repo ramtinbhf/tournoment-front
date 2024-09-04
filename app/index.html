@@ -1,304 +1,623 @@
+<?php
+include_once('jdf.php');
+?>
 <!DOCTYPE html>
+
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>Document</title>
-  </head>
 
-  <body class="font-sadritennis bg-slate-200">
-    <header class="flex flex-col">
-      <section class="bg-[#00838f]">
-        <div class="container mx-auto px-8 text-white w-full flex justify-between p-[5px] text-xs">
-          <div>
-            <ul class="flex gap-4">
-              <li><a href="">پخش زنده</a></li>
-              <li><a href="">پیش بینی</a></li>
-              <li><a href="">گزارش تصویری</a></li>
-              <li><a href="">اخبار تنیس</a></li>
-              <li><a href="">پادکست</a></li>
-            </ul>
-          </div>
-          <div class="flex gap-4">
-            <span>جمعه 2 شهریور</span>
-            <span>ورود</span>
-          </div>
-        </div>
-      </section>
-      <nav class="shadow-lg bg-white">
-        <div class="container mx-auto px-8 py-4 flex items-center justify-start gap-4">
-          <div>
-            <a href="/"><img src="./images/logo-sadri.svg" alt="" /></a>
-          </div>
-          <div class="text-sm font-medium">
-            <ul class="flex gap-4">
-              <li class="hover:text-teal-600"><a href="">صفحه اصلی</a></li>
-              <li class="text-red-500"><a href="">جدول لیگ نردبانی</a></li>
-              <li class="hover:text-teal-600"><a href="">جام حذفی</a></li>
-              <li class="hover:text-teal-600"><a href="">ویدیو</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <section class="my-8 container mx-auto px-8 flex flex-col md:flex-row gap-4">
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white border-t-4 border-teal-600 w-full">
-        <h2 class="font-bold text-teal-600 text-center py-4">لیگ نردبانی 1403</h2>
-        <div class="flex justify-between">
-          <form class="w-full px-8">
-            <select id="weekSelector" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-              <option value="week1" selected>هفته اول</option>
-              <!-- <option value="week2">هفته دوم</option> -->
-            </select>
-          </form>
-        </div>
+<head>
 
-        <div id="content">
-          <div id="week1Content" class="week-content">
-            <div class="w-full text-sm text-right text-gray-900 mt-2">
-              <div>
-                <div>
-                  <div class="text-xs text-gray-700 uppercase bg-gray-50">
-                    <div class="font-medium whitespace-nowrap text-center text-xs">
-                      <h4 class="flex justify-center py-3 bg-gray-500 text-white font-semibold">دوشنبه 5 شهریور</h4>
-                    </div>
-                  </div>
-                  <div class="odd:bg-white even:bg-gray-100 border-b border-gray-100 flex justify-between items-center px-8 py-2">
-                    <div class="text-gray-700">
-                      <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
-                          <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
-                        </svg>
-                      </a>
-                    </div>
-                    <a href="#" scope="row" class="font-medium whitespace-nowrap text-center text-xs flex justify-center gap-4">
-                      <div>مریم محمودوند</div>
-                      <div class="flex gap-2">
-                        <span></span>
-                        <span>-</span>
-                        <span></span>
-                      </div>
-                      <div>بردیا امین الدوله</div>
-                    </a>
-                    <div class="text-xs">15:00</div>
-                  </div>
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+
+  <link rel="stylesheet" href="./css/bootstrap/bootstrap.rtl.min.css" />
+
+  <link rel="stylesheet" href="./css/style.css?ver=1.0.1" />
+
+  <title>لیگ نردبانی 1403 | آکادمی صدری</title>
+  <link rel="icon" type="image/x-icon" href="images/logo-2.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/logo-2.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/logo-2.png">
+
+</head>
+
+
+
+<body class="font-sadritennis bg-slate-200">
+
+  <header class="flex flex-col">
+
+    <section class="bg-[#00838f]">
+
+      <div class="container mx-auto px-8 text-white w-full flex items-center justify-between p-[5px] text-xs">
+
+        <div>
+          <nav class="navbar navbar-expand-lg p-0 text-white " aria-label="Offcanvas navbar large">
+            <div class="container-fluid px-0">
+
+              <button class="navbar-toggler border-0 text-white p-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end bg-[#00838f]" tabindex="-1" id="offcanvasNavbar2"
+                aria-labelledby="offcanvasNavbar2Label">
+                <div class="offcanvas-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div>
-                  <div class="text-xs text-gray-700 uppercase bg-gray-50">
-                    <div class="font-medium whitespace-nowrap text-center text-xs">
-                      <h4 class="flex justify-center py-3 bg-gray-500 text-white font-semibold">چهارشنبه 7 شهریور</h4>
-                    </div>
-                  </div>
-                  <div class="odd:bg-white even:bg-gray-100 border-b border-gray-100 flex justify-between items-center px-8 py-2">
-                    <div class="text-gray-700">
-                      <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
-                          <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
-                        </svg>
-                      </a>
-                    </div>
-                    <a href="#" scope="row" class="font-medium whitespace-nowrap text-center text-xs flex justify-center gap-4">
-                      <div>محمد محمودوند</div>
-                      <div class="flex gap-2">
-                        <span></span>
-                        <span>-</span>
-                        <span></span>
-                      </div>
-                      <div>بابک گنجی زاده</div>
-                    </a>
-                    <div class="text-xs">16:00</div>
-                  </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 text-white">
+
+                    <li class="nav-item ">
+                      <a class="nav-link text-white" href="#"> پخش زنده </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-white" href="#"> پیش بینی</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-white" href="#"> اخبار تنیس </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link text-white" href="#"> پادکست </a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div id="week2Content" class="week-content hidden">
-            <!-- محتوای هفته دوم -->
-            <div class="w-full text-sm text-right text-gray-900 mt-2">
-              <div>
-                <div>
-                  <div class="text-xs text-gray-700 uppercase bg-gray-50">
-                    <div class="font-medium whitespace-nowrap text-center text-xs">
-                      <h4 class="flex justify-center py-3 bg-gray-500 text-white font-semibold">دوشنبه 5 شهریور</h4>
-                    </div>
-                  </div>
-                  <div class="odd:bg-white even:bg-gray-100 border-b border-gray-100 flex justify-between items-center px-8 py-2">
-                    <div class="text-gray-700">
-                      <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
-                          <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
-                        </svg>
-                      </a>
-                    </div>
-                    <a href="#" scope="row" class="font-medium whitespace-nowrap text-center text-xs flex justify-center gap-4">
-                      <div>مریم محمودوند</div>
-                      <div class="flex gap-2">
-                        <span></span>
-                        <span>-</span>
-                        <span></span>
-                      </div>
-                      <div>بردیا امین الدوله</div>
-                    </a>
-                    <div class="text-xs">15:00</div>
-                  </div>
-                </div>
-                <div>
-                  <div class="text-xs text-gray-700 uppercase bg-gray-50">
-                    <div class="font-medium whitespace-nowrap text-center text-xs">
-                      <h4 class="flex justify-center py-3 bg-gray-500 text-white font-semibold">چهارشنبه 7 شهریور</h4>
-                    </div>
-                  </div>
-                  <div class="odd:bg-white even:bg-gray-100 border-b border-gray-100 flex justify-between items-center px-8 py-2">
-                    <div class="text-gray-700">
-                      <a href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
-                          <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
-                        </svg>
-                      </a>
-                    </div>
-                    <a href="#" scope="row" class="font-medium whitespace-nowrap text-center text-xs flex justify-center gap-4">
-                      <div>محمد محمودوند</div>
-                      <div class="flex gap-2">
-                        <span></span>
-                        <span>-</span>
-                        <span></span>
-                      </div>
-                      <div>بابک گنجی زاده</div>
-                    </a>
-                    <div class="text-xs">16:00</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </nav>
         </div>
-      </div>
-      <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white border-t-4 border-teal-600 w-full">
-        <h2 class="font-bold text-teal-600 text-center py-4">جدول لیگ نردبانی 1403</h2>
-        <div class="flex justify-between">
-          <form class="w-full px-8">
-            <select id="tournoments" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-              <option selected>لیگ نردبانی 1403</option>
-            </select>
-          </form>
+        <div class="flex gap-4">
+          <span> <?php echo jdate('l d F'); ?> </span>
         </div>
-
-        <table class="flex flex-col w-full mt-2">
-          <thead class="w-full flex">
-            <tr class="flex gap-4 w-full justify-between py-2 px-4 bg-gray-300 text-xs">
-              <th class="flex justify-center w-8">رتبه</th>
-              <th class="flex justify-center w-52">نام بازیکن</th>
-              <th class="flex justify-center">بازی</th>
-              <th class="flex justify-center">امتياز</th>
-            </tr>
-          </thead>
-          <tbody class="w-full text-sm">
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">1</td>
-              <td class="flex justify-center w-32"><a href="#"> علی حمدالله زاده</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">2</td>
-              <td class="flex justify-center w-32"><a href="#">بردیا امین الدوله</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">3</td>
-              <td class="flex justify-center w-32"><a href="#">مریم محمودوند</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">4</td>
-              <td class="flex justify-center w-32"><a href="#">مهدی اکبری</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">5</td>
-              <td class="flex justify-center w-32"><a href="#">رضا نیکو</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">6</td>
-              <td class="flex justify-center w-32"><a href="#">امین رضایی</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">7</td>
-              <td class="flex justify-center w-32"><a href="#">محمدرضارنجبری</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">8</td>
-              <td class="flex justify-center w-32"><a href="#">آتنا شکری</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">9</td>
-              <td class="flex justify-center w-32"><a href="#">پارسا گنجی زادی</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">10</td>
-              <td class="flex justify-center w-32"><a href="#">فاطمه غلامی</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">11</td>
-              <td class="flex justify-center w-32"><a href="#">رامتین بهفروزی</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">12</td>
-              <td class="flex justify-center w-32"><a href="#">ارژم فکر</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">13</td>
-              <td class="flex justify-center w-32"><a href="#">بابک گنجی زاده</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">14</td>
-              <td class="flex justify-center w-32"><a href="#">محمد محمودوند</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-            <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
-              <td class="flex justify-center w-8">15</td>
-              <td class="flex justify-center w-32"><a href="#">یاسی رضایی</a></td>
-              <td class="flex justify-center">0</td>
-              <td class="flex justify-center">0</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </section>
-    <script src="./js/swiper-bundle.min.js"></script>
-    <script>
-      document.getElementById("weekSelector").addEventListener("change", function () {
-        let selectedWeek = this.value;
-        document.querySelectorAll(".week-content").forEach(function (content) {
-          content.classList.add("hidden");
-        });
-        document.getElementById(selectedWeek + "Content").classList.remove("hidden");
+
+    <nav class="shadow-lg bg-white">
+      <div class="container mx-auto px-8 py-4 flex items-center justify-between gap-4">
+        <div>
+          <a href="/"><img src="./images/logo-sadri.svg" alt="" /></a>
+        </div>
+        <div class="text-sm font-sm md:font-medium">
+          <nav class="navbar navbar-expand-lg p-0 text-white " aria-label="Offcanvas navbar large">
+            <div class="container-fluid px-0">
+
+              <button class="navbar-toggler border-0 text-white p-0" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasNavbar3" aria-controls="offcanvasNavbar3" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end bg-[#00838f]" tabindex="-1" id="offcanvasNavbar3"
+                aria-labelledby="offcanvasNavbar3Label">
+                <div class="offcanvas-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 gap-4">
+
+                    <li class="nav-item hover:text-teal-600">
+                      <a href="">صفحه اصلی</a>
+                    </li>
+                    <li class="nav-item text-red-500">
+                      <a href="">جدول لیگ نردبانی</a>
+                    </li>
+                    <li class="nav-item hover:text-teal-600">
+                      <a href="">جام حذفی</a>
+                    </li>
+                    <li class="nav-item hover:text-teal-600">
+                      <a href="">ویدیو</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+
+
+        </div>
+
+      </div>
+
+    </nav>
+
+  </header>
+
+  <section class="my-8 container mx-auto px-8 flex flex-col md:flex-row gap-4">
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white border-t-4 border-teal-600 w-full">
+
+      <h2 class="font-bold text-teal-600 text-center py-4">لیگ نردبانی 1403</h2>
+
+      <div class="flex justify-between">
+
+        <form class="w-full px-8">
+
+          <select id="weekSelector"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            <option value="week1">هفته اول</option>
+            <option value="week2" selected>هفته دوم</option>
+
+
+          </select>
+
+        </form>
+
+      </div>
+
+
+
+      <div id="content">
+        <!-- هفته اول -->
+        <div id="week1Content" class="week-content hidden">
+
+          <div class="w-full text-sm text-right text-gray-900 mt-2">
+
+            <div>
+
+              <div>
+
+                <div class="text-xs text-gray-700 uppercase bg-gray-50">
+
+                  <div class="font-medium whitespace-nowrap text-center text-xs">
+
+                    <h4 class="flex justify-center py-2 bg-gray-500 text-white font-semibold">دوشنبه 5 شهریور</h4>
+
+                  </div>
+
+                </div>
+
+                <div
+                  class="odd:bg-white even:bg-gray-100 border-b border-gray-100 flex justify-between items-center px-8 py-2">
+
+
+
+                  <a href="#" scope="row"
+                    class="font-medium whitespace-nowrap text-center text-xs flex justify-center gap-4 w-[76%] inline-flex items-center">
+
+                    <div class="text-left w-[42%]">مریم محمودوند</div>
+
+                    <div class="flex gap-2">
+
+                      <span>9</span>
+
+                      <span>-</span>
+
+                      <span>7</span>
+
+                    </div>
+
+                    <div class="text-right w-[42%]">بردیا امین الدوله</div>
+
+                  </a>
+
+                  <div class="text-xs">15:00</div>
+
+                </div>
+
+              </div>
+
+              <div>
+
+                <div class="text-xs text-gray-700 uppercase bg-gray-50">
+
+                  <div class="font-medium whitespace-nowrap text-center text-xs">
+
+                    <h4 class="flex justify-center py-2 bg-gray-500 text-white font-semibold">چهارشنبه 7 شهریور</h4>
+
+                  </div>
+
+                </div>
+
+                <div
+                  class="odd:bg-white even:bg-gray-100 border-b border-gray-100 flex justify-between items-center px-8 py-2">
+
+
+
+                  <a href="#" scope="row"
+                    class="font-medium whitespace-nowrap text-center text-xs justify-center gap-4 w-[76%] inline-flex items-center">
+
+                    <div class="text-left w-[42%]">آتنا شکری</div>
+
+                    <div class="flex gap-2">
+
+                      <span>9</span>
+
+                      <span class="px-[3px] items-baseline text-center w-[16%]">-</span>
+
+                      <span>8</span>
+
+                    </div>
+
+                    <div class="text-right w-[42%]">پارسا گنجی زاده</div>
+
+                  </a>
+
+                  <div class="text-xs">15:00</div>
+
+                </div>
+                <div
+                  class="odd:bg-white even:bg-gray-100 border-b border-gray-100 flex justify-between items-center px-8 py-2">
+
+
+
+                  <a href="#" scope="row"
+                    class="font-medium whitespace-nowrap text-center text-xs justify-center gap-4 w-[76%] inline-flex items-center">
+
+                    <div class="text-left w-[42%]">محمد محمودوند</div>
+
+                    <div class="flex gap-2">
+
+                      <span>0</span>
+
+                      <span class="px-[3px] items-baseline text-center w-[16%]">-</span>
+
+                      <span>9</span>
+
+                    </div>
+
+                    <div class="text-right w-[42%]">بابک گنجی زاده</div>
+
+                  </a>
+
+                  <div class="text-xs">16:00</div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+        <!-- هفته دوم -->
+        <div id="week2Content" class="week-content">
+
+          <div class="w-full text-sm text-right text-gray-900 mt-2">
+
+            <div>
+
+              <div>
+
+                <div class="text-xs text-gray-700 uppercase bg-gray-50">
+
+                  <div class="font-medium whitespace-nowrap text-center text-xs">
+
+                    <h4 class="flex justify-center py-2 bg-gray-500 text-white font-semibold">شنبه 10 شهریور</h4>
+
+                  </div>
+
+                </div>
+
+                <div
+                  class="odd:bg-white even:bg-gray-100 border-b border-gray-100 flex justify-between items-center px-8 py-2">
+
+
+
+                  <a href="#" scope="row"
+                    class="font-medium whitespace-nowrap text-center text-xs flex justify-center gap-4 w-[76%] inline-flex items-center">
+
+                    <div class="text-left w-[42%]"> علی حمدالله زاده</div>
+
+                    <div class="flex gap-2">
+
+                      <span>9</span>
+
+                      <span>-</span>
+
+                      <span>6</span>
+
+                    </div>
+
+                    <div class="text-right w-[42%]">بردیا امین الدوله</div>
+
+                  </a>
+
+                  <div class="text-xs">16:00</div>
+
+                </div>
+                <div
+                  class="odd:bg-white even:bg-gray-100 border-b border-gray-100 flex justify-between items-center px-8 py-2">
+
+
+
+                  <a href="#" scope="row"
+                    class="font-medium whitespace-nowrap text-center text-xs flex justify-center gap-4 w-[76%] inline-flex items-center">
+
+                    <div class="text-left w-[42%]">فاطمه غلامی</div>
+
+                    <div class="flex gap-2">
+
+                      <span>1</span>
+
+                      <span>-</span>
+
+                      <span>9</span>
+
+                    </div>
+
+                    <div class="text-right w-[42%]"> محمدعلی ارژم فکر </div>
+
+                  </a>
+
+                  <div class="text-xs">21:00</div>
+
+                </div>
+
+              </div>
+
+              <div>
+
+
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
+
+      </div>
+
+    </div>
+
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white border-t-4 border-teal-600 w-full">
+
+      <h2 class="font-bold text-teal-600 text-center py-4">جدول لیگ نردبانی 1403</h2>
+
+      <div class="flex justify-between">
+
+        <form class="w-full px-8">
+
+          <select id="tournoments"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+
+            <option selected>لیگ نردبانی 1403</option>
+
+          </select>
+
+        </form>
+
+      </div>
+
+
+
+      <table class="flex flex-col w-full mt-2">
+
+        <thead class="w-full flex">
+
+          <tr class="flex gap-4 w-full justify-between py-2 px-4 bg-gray-300 text-xs">
+
+            <th class="flex justify-center w-8">رتبه</th>
+
+            <th class="flex justify-center w-52">نام بازیکن</th>
+
+            <th class="flex justify-center">بازی</th>
+
+            <th class="flex justify-center">امتياز</th>
+
+          </tr>
+
+        </thead>
+
+        <tbody class="w-full text-sm">
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">1</td>
+
+            <td class="flex justify-center w-32"><a href="#"> علی حمدالله زاده</a></td>
+
+            <td class="flex justify-center">1</td>
+
+            <td class="flex justify-center">3</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">2</td>
+
+            <td class="flex justify-center w-32"><a href="#">مریم محمودوند</a></td>
+
+            <td class="flex justify-center">1</td>
+
+            <td class="flex justify-center">3</td>
+
+          </tr>
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">3</td>
+
+            <td class="flex justify-center w-32"><a href="#">بردیا امین الدوله</a></td>
+
+            <td class="flex justify-center">2</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">4</td>
+
+            <td class="flex justify-center w-32"><a href="#">مهدی اکبری</a></td>
+
+            <td class="flex justify-center">0</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">5</td>
+
+            <td class="flex justify-center w-32"><a href="#">رضا نیکو</a></td>
+
+            <td class="flex justify-center">0</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">6</td>
+
+            <td class="flex justify-center w-32"><a href="#">امین رضایی</a></td>
+
+            <td class="flex justify-center">0</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">7</td>
+
+            <td class="flex justify-center w-32"><a href="#">محمدرضا رنجبری</a></td>
+
+            <td class="flex justify-center">0</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">8</td>
+
+            <td class="flex justify-center w-32"><a href="#">آتنا شکری</a></td>
+
+            <td class="flex justify-center">1</td>
+
+            <td class="flex justify-center">3</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">9</td>
+
+            <td class="flex justify-center w-32"><a href="#">پارسا گنجی زاده </a></td>
+
+            <td class="flex justify-center">1</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">10</td>
+            
+            <td class="flex justify-center w-32"><a href="#">محمدعلی ارژم فکر</a></td>
+
+            <td class="flex justify-center">1</td>
+
+            <td class="flex justify-center">3</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">11</td>
+
+            <td class="flex justify-center w-32"><a href="#">رامتین بهفروزی</a></td>
+
+            <td class="flex justify-center">0</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">12</td>
+
+            <td class="flex justify-center w-32"><a href="#">فاطمه غلامی</a></td>
+
+            <td class="flex justify-center">1</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">13</td>
+
+            <td class="flex justify-center w-32"><a href="#">بابک گنجی زاده</a></td>
+
+            <td class="flex justify-center">1</td>
+
+            <td class="flex justify-center">3</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">14</td>
+
+            <td class="flex justify-center w-32"><a href="#">محمد محمودوند</a></td>
+
+            <td class="flex justify-center">1</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+          <tr class="odd:bg-white even:bg-gray-100 px-4 py-2 w-full flex justify-between items-start">
+
+            <td class="flex justify-center w-8">15</td>
+
+            <td class="flex justify-center w-32"><a href="#">یاسی رضایی</a></td>
+
+            <td class="flex justify-center">0</td>
+
+            <td class="flex justify-center">0</td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+  <script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/bootstrap/bootstrap.min.js"></script>
+
+
+
+  <script>
+    document.getElementById("weekSelector").addEventListener("change", function() {
+
+      let selectedWeek = this.value;
+
+      document.querySelectorAll(".week-content").forEach(function(content) {
+
+        content.classList.add("hidden");
+
       });
-    </script>
-  </body>
+
+      document.getElementById(selectedWeek + "Content").classList.remove("hidden");
+
+    });
+  </script>
+  <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
